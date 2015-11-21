@@ -1,0 +1,36 @@
+{
+  "name": "removeAllEndpoints",
+  "ns": "jsplumb",
+  "title": "Remove all endpoints",
+  "description": "Removes all Endpoints associated with a given element. \nAlso removes all Connections associated with each Endpoint it removes. jsPlumb expects\nthat the element referenced here exists in the DOM. If it does not, or you are uncertain\nwhether it will exist or not, use {@link jsPlumbInstance#remove}.",
+  "phrases": {
+    "active": "Remove all endpoints"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "el": {
+        "type": "string",
+        "title": "El",
+        "description": "The element in question.",
+        "async": true
+      },
+      "recurse": {
+        "type": "boolean",
+        "title": "Recurse",
+        "description": "Whether or not to recurse down through this elements children and remove their endpoints too.",
+        "default": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

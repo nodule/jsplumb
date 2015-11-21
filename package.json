@@ -1,0 +1,25 @@
+{
+  "name": "chix-jsplumb",
+  "description": "jsPlumb nodes for Chiχ",
+  "author": "Rob Halff <rob.halff@gmail.com>",
+  "version": "0.0.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/jsplumb.git"
+  },
+  "dependencies": {
+    "jsplumb": "^2.0.3",
+    "request": "2.9.x"
+  },
+  "devDependencies": {
+    "chit": "0.x.x"
+  },
+  "scripts": {
+    "test": "chit"
+  },
+  "chix": {
+    "name": "jsplumb",
+    "color": "rgb(71,162,170)"
+  }
+}

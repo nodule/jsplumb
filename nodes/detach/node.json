@@ -1,0 +1,54 @@
+{
+  "name": "detach",
+  "ns": "jsplumb",
+  "title": "Detach",
+  "description": "Detaches a Connection.",
+  "phrases": {
+    "active": "Detach"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "connection": {
+        "type": "Connection",
+        "title": "Connection",
+        "description": "The Connection to detach",
+        "async": true
+      },
+      "params": {
+        "type": "object",
+        "title": "Params",
+        "description": "Optional parameters to the detach call.",
+        "properties": {
+          "fire_event": {
+            "type": "boolean",
+            "title": "Fire event",
+            "description": "Indicates you want jsPlumb to fire a connection detached event. The thinking behind this is that if you made a programmatic\ncall to detach an event, you probably don't need the callback.",
+            "default": false
+          },
+          "force_detach": {
+            "type": "boolean",
+            "title": "Force detach",
+            "description": "Allows you to override any beforeDetach listeners that may be registered.",
+            "default": false
+          }
+        }
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "success": {
+        "type": "boolean",
+        "title": "Boolean",
+        "description": "True if successful, false if not."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

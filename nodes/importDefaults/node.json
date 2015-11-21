@@ -1,0 +1,30 @@
+{
+  "name": "importDefaults",
+  "ns": "jsplumb",
+  "title": "Import defaults",
+  "description": "Imports all the given defaults into this instance of jsPlumb.   ",
+  "phrases": {
+    "active": "Import defaults"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "defaults": {
+        "type": "object",
+        "title": "Defaults",
+        "description": "The defaults to import.",
+        "async": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

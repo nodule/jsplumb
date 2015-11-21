@@ -1,0 +1,29 @@
+{
+  "name": "setContainer",
+  "ns": "jsplumb",
+  "title": "Set container",
+  "description": "Sets the current element to use as the Container for the given jsPlumbInstance - the element that will be the parent for\nall artefacts added by jsPlumb. By default, the Container is set to the offsetParent of the first element on which \n`connect`, `addEndpoint`, `makeSource` or `makeTarget` is called, but you are encouraged to set a Container either in the\narguments to the `jsPlumb.newInstance(...)` method, or via `jsPlumbInstance.importDefaults`.",
+  "phrases": {
+    "active": "Set container"
+  },
+  "ports": {
+    "input": {
+      "container": {
+        "type": "any",
+        "title": "Container",
+        "description": "Either an element id, a DOM element, or a selector from the underlying library",
+        "async": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

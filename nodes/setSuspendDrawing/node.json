@@ -1,0 +1,34 @@
+{
+  "name": "setSuspendDrawing",
+  "ns": "jsplumb",
+  "title": "Set suspend drawing",
+  "description": "Sets whether or not drawing is suspended. you should use this when doing bulk painting, like when first drawing a UI.",
+  "phrases": {
+    "active": "Set suspend drawing"
+  },
+  "ports": {
+    "input": {
+      "suspend": {
+        "type": "boolean",
+        "title": "Val",
+        "description": "Whether or not to suspend drawing."
+      },
+      "repaint": {
+        "type": "boolean",
+        "title": "Repaint afterwards",
+        "description": "If true, jsPlumb will run a full repaint. Otherwise it will not.",
+        "default": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

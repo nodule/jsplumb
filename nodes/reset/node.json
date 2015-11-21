@@ -1,0 +1,23 @@
+{
+  "name": "reset",
+  "ns": "jsplumb",
+  "title": "Reset",
+  "description": "Removes all endpoints and connections and clears the listener list. To keep listeners call {@link jsPlumbInstance#deleteEveryEndpoint}\ninstead of this.",
+  "phrases": {
+    "active": "Reset"
+  },
+  "ports": {
+    "input": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

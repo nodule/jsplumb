@@ -1,0 +1,29 @@
+{
+  "name": "repaint",
+  "ns": "jsplumb",
+  "title": "Repaint",
+  "description": "Repaints an element and its connections.",
+  "phrases": {
+    "active": "Repaint"
+  },
+  "ports": {
+    "input": {
+      "el": {
+        "type": "string",
+        "title": "El",
+        "description": "The element in question.",
+        "async": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

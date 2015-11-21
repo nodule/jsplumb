@@ -1,0 +1,45 @@
+{
+  "name": "addEndpoint",
+  "ns": "jsplumb",
+  "title": "Add endpoint",
+  "description": "Adds an Endpoint to a given element or elements. See also `jsPlumbInstance.addEndpoints`.",
+  "phrases": {
+    "active": "Add endpoint"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "el": {
+        "type": "string",
+        "title": "El",
+        "description": "Element to add the endpoint to. Either an element id, a selector representing some element(s), or an array of either of these. ",
+        "async": true
+      },
+      "params": {
+        "type": "object",
+        "title": "Params",
+        "description": "Object containing Endpoint constructor arguments. For more information, see {@link Endpoint}"
+      },
+      "reference_params": {
+        "type": "object",
+        "title": "Reference params",
+        "description": "Object containing more Endpoint constructor arguments; it will be merged with params by jsPlumb. You would use this if you had some  shared parameters that you wanted to reuse when you added Endpoints to a number of elements. The allowed values in this object are anything that 'params' can contain.  See <Endpoint>.\t"
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "endpoint": {
+        "type": "object",
+        "title": "Endpoint",
+        "description": "The newly created Endpoint, if `el` referred to a single element. Otherwise, an array of newly created `Endpoint`s."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "getConnections",
+  "ns": "jsplumb",
+  "title": "Get connections",
+  "description": "Gets all or a subset of connections currently managed by this jsPlumb instance.  If only one scope is passed in to this method,\nthe result will be a list of connections having that scope (passing in no scope at all will result in jsPlumb assuming you want the\ndefault scope).\n\nIf multiple scopes are passed in, the return value will be a map of\n\n   `{ scope -> [ connection... ] }`\n",
+  "phrases": {
+    "active": "Get connections"
+  },
+  "ports": {
+    "input": {
+      "scope": {
+        "type": "string",
+        "title": "Scope",
+        "description": "If the first argument supplied to this function is a string, it is treated as a scope filter, and this method will return a list of connections that are in the given scope. use '*' for all scopes.",
+        "required": false
+      },
+      "options": {
+        "type": "object",
+        "title": "Options",
+        "description": "Filter options",
+        "required": false,
+        "properties": {
+          "scope": {
+            "type": "string",
+            "title": "Scope",
+            "description": "may be a string specifying a single scope, or an array of strings, specifying multiple scopes. Also may have the value '*', indicating any scope.",
+            "required": false
+          },
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "either a string representing an element id, a selector, or an array of ids. Also may have the value '*', indicating any source. Constrains the result to connections having this/these element(s) as source.",
+            "required": false
+          },
+          "target": {
+            "type": "string",
+            "title": "Target",
+            "description": "either a string representing an element id, a selector, or an array of ids. Also may have the value '*', indicating any target. Constrains the result to connections having this/these element(s) as target.",
+            "required": false
+          }
+        }
+      },
+      "flat": {
+        "type": "boolean",
+        "title": "Flat",
+        "description": "return results in a flat array (don't return an object whose keys are scopes and whose values are lists per scope).",
+        "default": false
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "array": {
+        "type": "array",
+        "title": "Array",
+        "description": "If only one scope was requested, a list of Connections that match the criteria. Otherwise, a map of [scope->connection lists]."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "registerEndpointTypes",
+  "ns": "jsplumb",
+  "title": "Register endpoint types",
+  "description": "Registers all of the given Endpoint types on this instance of jsPlumb. `types` is expected\nto contain keys with typeids and values with type specification objects.",
+  "phrases": {
+    "active": "Register endpoint types"
+  },
+  "ports": {
+    "input": {
+      "types": {
+        "type": "object",
+        "title": "Types",
+        "description": "Object containing the type specifications."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "getInstance",
+  "ns": "jsplumb",
+  "title": "Get instance",
+  "description": "Gets a new instance of jsPlumb.",
+  "phrases": {
+    "active": "Get instance"
+  },
+  "dependencies": {
+    "npm": {
+      "jsplumb": "latest"
+    }
+  },
+  "ports": {
+    "input": {
+      "defaults": {
+        "type": "object",
+        "title": "Defaults",
+        "description": "Optional default settings for the new instance.",
+        "required": false
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

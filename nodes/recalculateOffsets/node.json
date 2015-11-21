@@ -1,0 +1,30 @@
+{
+  "name": "recalculateOffsets",
+  "ns": "jsplumb",
+  "title": "Recalculate offsets",
+  "description": "Recalculates the offsets of all child elements of some element. If you have Endpoints registered on the\ndescendants of some element and you make changes to that element's markup, it is possible that the location\nof each Endpooint relative to the origin of the element may have changed. So you call this to tell jsPlumb to\nrecalculate.  You need to do this because, for performance reasons, jsplumb won't calculate these offsets on\nthe fly.",
+  "phrases": {
+    "active": "Recalculate offsets"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "el": {
+        "type": "string",
+        "title": "El",
+        "description": "The element for which to recalculate offsets.",
+        "async": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

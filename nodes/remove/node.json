@@ -1,0 +1,30 @@
+{
+  "name": "remove",
+  "ns": "jsplumb",
+  "title": "Remove",
+  "description": "Removes the given element from the DOM, along with all Endpoints associated with it,\nand their connections.  This also removes all Endpoints and Connections belonging to child elements, as well as - of course -\nthe child elements themselves.",
+  "phrases": {
+    "active": "Remove"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "el": {
+        "type": "string",
+        "title": "El",
+        "description": "The element in question.",
+        "async": true
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

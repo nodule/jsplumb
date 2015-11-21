@@ -1,0 +1,75 @@
+{
+  "name": "connect",
+  "ns": "jsplumb",
+  "title": "Connect",
+  "description": "Establishes a {@link Connection} between two elements (or {@link Endpoint}s, which are themselves registered to elements).",
+  "phrases": {
+    "active": "Connect"
+  },
+  "ports": {
+    "input": {
+      "params": {
+        "type": "object",
+        "title": "Params",
+        "description": "Connection params",
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "description": "Source of the connection. May be an id, or an element, or an Endpoint."
+          },
+          "target": {
+            "type": "string",
+            "title": "target",
+            "description": "Target of the connection. May be an id, or an element, or an Endpoint."
+          },
+          "uuids": {
+            "type": "array",
+            "title": "uuids",
+            "description": "Optional array of UUIDs of the two Endpoints to connect. If you supply this you do not need to supply `source` or `target`.",
+            "required": false
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "Optional type for the Connection.",
+            "required": false
+          },
+          "pointer_events": {
+            "type": "string",
+            "title": "Pointer events",
+            "description": "Optional `pointer-events` value for the Connection (only used by the SVG renderer)",
+            "required": false
+          },
+          "connector": {
+            "type": "string",
+            "title": "connector",
+            "description": "The type of Connector to use. Defaults to whatever is set in the defaults for the instance. This parameter can be either a String - a named Connector, such as \"Straight\" - or an array consisting of a Connector name plus\nconstructor parameters. For further information see the main documentation.",
+            "required": false
+          }
+         }
+      },
+      "reference_params": {
+        "type": "object",
+        "title": "Reference params",
+        "description": "Optional second set of parameters, which will be merged into a new object along with `params`. This can be useful if you have some common settings to share between multiple `connect` calls. Valid values in this object are anything that is valid in `params`.",
+        "required": false
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "connection": {
+        "type": "Connection",
+        "title": "Connection",
+        "description": "The Connection that was created, or null if either the source or target element was not found (in which case the missin element is also logged)."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

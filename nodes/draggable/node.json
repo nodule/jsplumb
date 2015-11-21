@@ -1,0 +1,35 @@
+{
+  "name": "draggable",
+  "ns": "jsplumb",
+  "title": "Draggable",
+  "description": "Initialises some element or elements to be draggable.  You should use this instead of your\nlibrary's draggable method so that jsPlumb can setup the appropriate callbacks.  Your\nunderlying library's drag method is always called from this method.",
+  "phrases": {
+    "active": "Draggable"
+  },
+  "async": true,
+  "ports": {
+    "input": {
+      "el": {
+        "type": "object",
+        "title": "El",
+        "description": "Either an element id, an element, a list of element ids, or a selector.",
+        "async": true
+      },
+      "options": {
+        "type": "object",
+        "title": "Options",
+        "description": "Options to pass through to the underlying library. A common use case in jQueryUI, for instance, is to provide a `containment` parameter: \n        `jsPlumb.draggable(\"someElementId\", {\n           containment:\"parent\"\n         });`"
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

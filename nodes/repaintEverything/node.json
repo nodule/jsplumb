@@ -1,0 +1,29 @@
+{
+  "name": "repaintEverything ",
+  "ns": "jsplumb",
+  "title": "Repaint everything",
+  "description": "Repaints all connections and endpoints.",
+  "phrases": {
+    "active": "Repaint everything"
+  },
+  "ports": {
+    "input": {
+      "clear_edits": {
+        "type": "boolean",
+        "title": "Clear edits",
+        "description": "If true, clear all edits made since last paint (anchors having moved, conenctions edited, absolute overlay positions etc)",
+        "default": false
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}

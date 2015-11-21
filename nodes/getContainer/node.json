@@ -1,0 +1,28 @@
+{
+  "name": "getContainer",
+  "ns": "jsplumb",
+  "title": "Get container",
+  "description": "Gets the current element in use as the Container for the given jsPlumbInstance",
+  "phrases": {
+    "active": "Get container"
+  },
+  "ports": {
+    "input": {
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    },
+    "output": {
+      "element": {
+        "type": "Element",
+        "title": "Element",
+        "description": "The current element in use as the Container."
+      },
+      "jsplumb": {
+        "type": "jsPlumbInstance",
+        "title": "Jsplumbinstance"
+      }
+    }
+  }
+}
