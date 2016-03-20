@@ -13,7 +13,8 @@
     "request": "2.9.x"
   },
   "devDependencies": {
-    "chit": "0.x.x"
+    "chit": "0.x.x",
+    "mottle": "^0.7.0"
   },
   "scripts": {
     "test": "chit"

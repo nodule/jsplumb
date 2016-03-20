@@ -1,0 +1,664 @@
+{
+  "name": "jsplumb",
+  "description": "jsPlumb nodes for Chiχ",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/jsplumb.git"
+  },
+  "dependencies": {
+    "jsplumb": "^2.0.3",
+    "request": "2.9.x"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "string",
+            "title": "El",
+            "description": "Element to add the endpoint to. Either an element id, a selector representing some element(s), or an array of either of these. ",
+            "async": true
+          },
+          "params": {
+            "type": "object",
+            "title": "Params",
+            "description": "Object containing Endpoint constructor arguments. For more information, see {@link Endpoint}"
+          },
+          "reference_params": {
+            "type": "object",
+            "title": "Reference params",
+            "description": "Object containing more Endpoint constructor arguments; it will be merged with params by jsPlumb. You would use this if you had some  shared parameters that you wanted to reuse when you added Endpoints to a number of elements. The allowed values in this object are anything that 'params' can contain.  See <Endpoint>.\t"
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "endpoint": {
+            "type": "object",
+            "title": "Endpoint",
+            "description": "The newly created Endpoint, if `el` referred to a single element. Otherwise, an array of newly created `Endpoint`s."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Add endpoint"
+      },
+      "description": "Adds an Endpoint to a given element or elements. See also `jsPlumbInstance.addEndpoints`.",
+      "title": "Add endpoint",
+      "ns": "jsplumb",
+      "name": "addEndpoint",
+      "fn": "on.input.el = function() {\n  output({\n    endpoint: input.jsplumb.addEndpoint(data, input.params, input.reference_params),\n    jsplumb: input.jsplumb\n  })\n};\n\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "params": {
+            "type": "object",
+            "title": "Params",
+            "description": "Connection params",
+            "properties": {
+              "source": {
+                "type": "string",
+                "title": "Source",
+                "description": "Source of the connection. May be an id, or an element, or an Endpoint."
+              },
+              "target": {
+                "type": "string",
+                "title": "target",
+                "description": "Target of the connection. May be an id, or an element, or an Endpoint."
+              },
+              "uuids": {
+                "type": "array",
+                "title": "uuids",
+                "description": "Optional array of UUIDs of the two Endpoints to connect. If you supply this you do not need to supply `source` or `target`.",
+                "required": false
+              },
+              "type": {
+                "type": "string",
+                "title": "Type",
+                "description": "Optional type for the Connection.",
+                "required": false
+              },
+              "pointer_events": {
+                "type": "string",
+                "title": "Pointer events",
+                "description": "Optional `pointer-events` value for the Connection (only used by the SVG renderer)",
+                "required": false
+              },
+              "connector": {
+                "type": "string",
+                "title": "connector",
+                "description": "The type of Connector to use. Defaults to whatever is set in the defaults for the instance. This parameter can be either a String - a named Connector, such as \"Straight\" - or an array consisting of a Connector name plus\nconstructor parameters. For further information see the main documentation.",
+                "required": false
+              }
+            }
+          },
+          "reference_params": {
+            "type": "object",
+            "title": "Reference params",
+            "description": "Optional second set of parameters, which will be merged into a new object along with `params`. This can be useful if you have some common settings to share between multiple `connect` calls. Valid values in this object are anything that is valid in `params`.",
+            "required": false
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "connection": {
+            "type": "Connection",
+            "title": "Connection",
+            "description": "The Connection that was created, or null if either the source or target element was not found (in which case the missin element is also logged)."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Connect"
+      },
+      "description": "Establishes a {@link Connection} between two elements (or {@link Endpoint}s, which are themselves registered to elements).",
+      "title": "Connect",
+      "ns": "jsplumb",
+      "name": "connect",
+      "fn": "output.connection = input.jsplumb.connect(input.params, input.reference_params);\noutput.jsplumb = input.jsplumb;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "connection": {
+            "type": "Connection",
+            "title": "Connection",
+            "description": "The Connection to detach",
+            "async": true
+          },
+          "params": {
+            "type": "object",
+            "title": "Params",
+            "description": "Optional parameters to the detach call.",
+            "properties": {
+              "fire_event": {
+                "type": "boolean",
+                "title": "Fire event",
+                "description": "Indicates you want jsPlumb to fire a connection detached event. The thinking behind this is that if you made a programmatic\ncall to detach an event, you probably don't need the callback.",
+                "default": false
+              },
+              "force_detach": {
+                "type": "boolean",
+                "title": "Force detach",
+                "description": "Allows you to override any beforeDetach listeners that may be registered.",
+                "default": false
+              }
+            }
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "success": {
+            "type": "boolean",
+            "title": "Boolean",
+            "description": "True if successful, false if not."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Detach"
+      },
+      "description": "Detaches a Connection.",
+      "title": "Detach",
+      "ns": "jsplumb",
+      "name": "detach",
+      "fn": "on.input.connection = function() {\n  output( { success: input.jsplumb.detach(data, input.params), jsplumb: input.jsplumb })\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "object",
+            "title": "El",
+            "description": "Either an element id, an element, a list of element ids, or a selector.",
+            "async": true
+          },
+          "options": {
+            "type": "object",
+            "title": "Options",
+            "description": "Options to pass through to the underlying library. A common use case in jQueryUI, for instance, is to provide a `containment` parameter: \n        `jsPlumb.draggable(\"someElementId\", {\n           containment:\"parent\"\n         });`"
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Draggable"
+      },
+      "description": "Initialises some element or elements to be draggable.  You should use this instead of your\nlibrary's draggable method so that jsPlumb can setup the appropriate callbacks.  Your\nunderlying library's drag method is always called from this method.",
+      "title": "Draggable",
+      "ns": "jsplumb",
+      "name": "draggable",
+      "fn": "on.input.el = function() {\n  input.jsplumb.draggable(data, input.options),\n  output({\n    jsplumb: input.jsplumb\n  })\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "scope": {
+            "type": "string",
+            "title": "Scope",
+            "description": "If the first argument supplied to this function is a string, it is treated as a scope filter, and this method will return a list of connections that are in the given scope. use '*' for all scopes.",
+            "required": false
+          },
+          "options": {
+            "type": "object",
+            "title": "Options",
+            "description": "Filter options",
+            "required": false,
+            "properties": {
+              "scope": {
+                "type": "string",
+                "title": "Scope",
+                "description": "may be a string specifying a single scope, or an array of strings, specifying multiple scopes. Also may have the value '*', indicating any scope.",
+                "required": false
+              },
+              "source": {
+                "type": "string",
+                "title": "Source",
+                "description": "either a string representing an element id, a selector, or an array of ids. Also may have the value '*', indicating any source. Constrains the result to connections having this/these element(s) as source.",
+                "required": false
+              },
+              "target": {
+                "type": "string",
+                "title": "Target",
+                "description": "either a string representing an element id, a selector, or an array of ids. Also may have the value '*', indicating any target. Constrains the result to connections having this/these element(s) as target.",
+                "required": false
+              }
+            }
+          },
+          "flat": {
+            "type": "boolean",
+            "title": "Flat",
+            "description": "return results in a flat array (don't return an object whose keys are scopes and whose values are lists per scope).",
+            "default": false
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "array": {
+            "type": "array",
+            "title": "Array",
+            "description": "If only one scope was requested, a list of Connections that match the criteria. Otherwise, a map of [scope->connection lists]."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Get connections"
+      },
+      "description": "Gets all or a subset of connections currently managed by this jsPlumb instance.  If only one scope is passed in to this method,\nthe result will be a list of connections having that scope (passing in no scope at all will result in jsPlumb assuming you want the\ndefault scope).\n\nIf multiple scopes are passed in, the return value will be a map of\n\n   `{ scope -> [ connection... ] }`\n",
+      "title": "Get connections",
+      "ns": "jsplumb",
+      "name": "getConnections",
+      "fn": "/* todo: non of the parameters are considered */\ninput.jsplumb.getConnections();\noutput.jsplumb = input.jsplumb;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "element": {
+            "type": "Element",
+            "title": "Element",
+            "description": "The current element in use as the Container."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Get container"
+      },
+      "description": "Gets the current element in use as the Container for the given jsPlumbInstance",
+      "title": "Get container",
+      "ns": "jsplumb",
+      "name": "getContainer",
+      "fn": "input.jsplumb.getContainer();\noutput.jsplumb = input.jsplumb;\n\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "defaults": {
+            "type": "object",
+            "title": "Defaults",
+            "description": "Optional default settings for the new instance.",
+            "required": false
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "dependencies": {
+        "npm": {
+          "jsplumb": "latest"
+        }
+      },
+      "phrases": {
+        "active": "Get instance"
+      },
+      "description": "Gets a new instance of jsPlumb.",
+      "title": "Get instance",
+      "ns": "jsplumb",
+      "name": "getInstance",
+      "fn": "output.jsplumb = jsplumb.getInstance(input.defaults)\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "defaults": {
+            "type": "object",
+            "title": "Defaults",
+            "description": "The defaults to import.",
+            "async": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Import defaults"
+      },
+      "description": "Imports all the given defaults into this instance of jsPlumb.   ",
+      "title": "Import defaults",
+      "ns": "jsplumb",
+      "name": "importDefaults",
+      "fn": "on.input.defaults = function() {\n  input.jsplumb.importDefaults(data);\n  output( { jsplumb: input.jsplumb })\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "string",
+            "title": "El",
+            "description": "The element for which to recalculate offsets.",
+            "async": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Recalculate offsets"
+      },
+      "description": "Recalculates the offsets of all child elements of some element. If you have Endpoints registered on the\ndescendants of some element and you make changes to that element's markup, it is possible that the location\nof each Endpooint relative to the origin of the element may have changed. So you call this to tell jsPlumb to\nrecalculate.  You need to do this because, for performance reasons, jsplumb won't calculate these offsets on\nthe fly.",
+      "title": "Recalculate offsets",
+      "ns": "jsplumb",
+      "name": "recalculateOffsets",
+      "fn": "on.input.el = function() {\n  input.jsplumb.recalculateOffsets(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "types": {
+            "type": "object",
+            "title": "Types",
+            "description": "Object containing the type specifications."
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Register endpoint types"
+      },
+      "description": "Registers all of the given Endpoint types on this instance of jsPlumb. `types` is expected\nto contain keys with typeids and values with type specification objects.",
+      "title": "Register endpoint types",
+      "ns": "jsplumb",
+      "name": "registerEndpointTypes",
+      "fn": "input.jsplumb.registerEndpointTypes(input.types);\noutput.jsplumb = input.jsplumb;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "string",
+            "title": "El",
+            "description": "The element in question.",
+            "async": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Remove"
+      },
+      "description": "Removes the given element from the DOM, along with all Endpoints associated with it,\nand their connections.  This also removes all Endpoints and Connections belonging to child elements, as well as - of course -\nthe child elements themselves.",
+      "title": "Remove",
+      "ns": "jsplumb",
+      "name": "remove",
+      "fn": "on.input.el = function() {\n  input.jsplumb.remove(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "string",
+            "title": "El",
+            "description": "The element in question.",
+            "async": true
+          },
+          "recurse": {
+            "type": "boolean",
+            "title": "Recurse",
+            "description": "Whether or not to recurse down through this elements children and remove their endpoints too.",
+            "default": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "async": true,
+      "phrases": {
+        "active": "Remove all endpoints"
+      },
+      "description": "Removes all Endpoints associated with a given element. \nAlso removes all Connections associated with each Endpoint it removes. jsPlumb expects\nthat the element referenced here exists in the DOM. If it does not, or you are uncertain\nwhether it will exist or not, use {@link jsPlumbInstance#remove}.",
+      "title": "Remove all endpoints",
+      "ns": "jsplumb",
+      "name": "removeAllEndpoints",
+      "fn": "on.input.el = function() {\n  input.jsplumb.removeAllEndpoints(data, input.recurse);\n  output( { jsplumb: input.jsplumb })\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "el": {
+            "type": "string",
+            "title": "El",
+            "description": "The element in question.",
+            "async": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Repaint"
+      },
+      "description": "Repaints an element and its connections.",
+      "title": "Repaint",
+      "ns": "jsplumb",
+      "name": "repaint",
+      "fn": "on.input.el = function() {\n  input.jsplumb.repaint(data);\n  output( { jsplumb: input.jsplumb })\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "clear_edits": {
+            "type": "boolean",
+            "title": "Clear edits",
+            "description": "If true, clear all edits made since last paint (anchors having moved, conenctions edited, absolute overlay positions etc)",
+            "default": false
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Repaint everything"
+      },
+      "description": "Repaints all connections and endpoints.",
+      "title": "Repaint everything",
+      "ns": "jsplumb",
+      "name": "repaintEverything ",
+      "fn": "input.jsplumb.repaintEverything(input.clear_edits);\noutput.jsplumb = input.jsplumb;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Reset"
+      },
+      "description": "Removes all endpoints and connections and clears the listener list. To keep listeners call {@link jsPlumbInstance#deleteEveryEndpoint}\ninstead of this.",
+      "title": "Reset",
+      "ns": "jsplumb",
+      "name": "reset",
+      "fn": "input.jsplumb.reset();\n\noutput.jsplumb = input.jsplumb;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "container": {
+            "type": "any",
+            "title": "Container",
+            "description": "Either an element id, a DOM element, or a selector from the underlying library",
+            "async": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Set container"
+      },
+      "description": "Sets the current element to use as the Container for the given jsPlumbInstance - the element that will be the parent for\nall artefacts added by jsPlumb. By default, the Container is set to the offsetParent of the first element on which \n`connect`, `addEndpoint`, `makeSource` or `makeTarget` is called, but you are encouraged to set a Container either in the\narguments to the `jsPlumb.newInstance(...)` method, or via `jsPlumbInstance.importDefaults`.",
+      "title": "Set container",
+      "ns": "jsplumb",
+      "name": "setContainer",
+      "fn": "on.input.container = function() {\n  input.jsplumb.setContainer(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "suspend": {
+            "type": "boolean",
+            "title": "Val",
+            "description": "Whether or not to suspend drawing."
+          },
+          "repaint": {
+            "type": "boolean",
+            "title": "Repaint afterwards",
+            "description": "If true, jsPlumb will run a full repaint. Otherwise it will not.",
+            "default": true
+          },
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        },
+        "output": {
+          "jsplumb": {
+            "type": "jsPlumbInstance",
+            "title": "Jsplumbinstance"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Set suspend drawing"
+      },
+      "description": "Sets whether or not drawing is suspended. you should use this when doing bulk painting, like when first drawing a UI.",
+      "title": "Set suspend drawing",
+      "ns": "jsplumb",
+      "name": "setSuspendDrawing",
+      "fn": "input.jsplumb.setSuspendDrawing(input.suspend, !input.repaint);\noutput.jsplumb = input.jsplumb;\n"
+    }
+  ],
+  "twigs": []
+}
