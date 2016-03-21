@@ -1,4 +1,4 @@
 on.input.el = function() {
-  input.jsplumb.removeAllEndpoints(input.el, input.recurse);
-  output( { jsplumb: input.jsplumb })
+  $.jsplumb.removeAllEndpoints($.el, $.recurse);
+  output( { jsplumb: $.jsplumb })
 };

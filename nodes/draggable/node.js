@@ -1,6 +1,6 @@
 on.input.el = function() {
-  input.jsplumb.draggable(input.el, input.options),
+  $.jsplumb.draggable($.el, $.options),
   output({
-    jsplumb: input.jsplumb
+    jsplumb: $.jsplumb
   })
 };

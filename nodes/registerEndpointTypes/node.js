@@ -1,2 +1,2 @@
-input.jsplumb.registerEndpointTypes(input.types);
-output.jsplumb = input.jsplumb;
+$.jsplumb.registerEndpointTypes($.types);
+output.jsplumb = $.jsplumb;

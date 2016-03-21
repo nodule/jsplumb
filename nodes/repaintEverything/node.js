@@ -1,2 +1,2 @@
-input.jsplumb.repaintEverything(input.clear_edits);
-output.jsplumb = input.jsplumb;
+$.jsplumb.repaintEverything($.clear_edits);
+output.jsplumb = $.jsplumb;

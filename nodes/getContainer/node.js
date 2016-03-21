@@ -1,3 +1,3 @@
-input.jsplumb.getContainer();
-output.jsplumb = input.jsplumb;
+$.jsplumb.getContainer();
+output.jsplumb = $.jsplumb;
 
