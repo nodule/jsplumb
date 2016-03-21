@@ -1,2 +1,2 @@
 $.jsplumb.setSuspendDrawing($.suspend, !$.repaint);
-output.jsplumb = $.jsplumb;
+output.jsplumb = $.get('jsplumb');

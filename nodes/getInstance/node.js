@@ -1,1 +1,1 @@
-output.jsplumb = jsplumb.getInstance($.defaults)
+output.jsplumb = $.create(jsplumb.getInstance($.defaults))

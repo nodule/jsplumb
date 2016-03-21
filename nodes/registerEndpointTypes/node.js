@@ -1,2 +1,2 @@
 $.jsplumb.registerEndpointTypes($.types);
-output.jsplumb = $.jsplumb;
+output.jsplumb = $.get('jsplumb');

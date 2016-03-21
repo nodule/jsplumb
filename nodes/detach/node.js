@@ -1,3 +1,3 @@
 on.input.connection = function() {
-  output( { success: $.jsplumb.detach($.connection, $.params), jsplumb: $.jsplumb })
+  output( { success: $.create($.jsplumb.detach($.connection, $.params)), jsplumb: $.get('jsplumb') })
 };

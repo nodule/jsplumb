@@ -1,3 +1,3 @@
 $.jsplumb.getContainer();
-output.jsplumb = $.jsplumb;
+output.jsplumb = $.get('jsplumb');
 

@@ -1,3 +1,3 @@
 $.jsplumb.reset();
 
-output.jsplumb = $.jsplumb;
+output.jsplumb = $.get('jsplumb');
