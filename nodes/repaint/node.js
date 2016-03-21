@@ -1,4 +1,4 @@
 on.input.el = function() {
-  input.jsplumb.repaint(data);
+  input.jsplumb.repaint(input.el);
   output( { jsplumb: input.jsplumb })
 };

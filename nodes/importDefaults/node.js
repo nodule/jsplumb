@@ -1,4 +1,4 @@
 on.input.defaults = function() {
-  input.jsplumb.importDefaults(data);
+  input.jsplumb.importDefaults(input.defaults);
   output( { jsplumb: input.jsplumb })
 };

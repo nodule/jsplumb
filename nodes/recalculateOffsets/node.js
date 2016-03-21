@@ -1,4 +1,4 @@
 on.input.el = function() {
-  input.jsplumb.recalculateOffsets(data);
+  input.jsplumb.recalculateOffsets(input.el);
   output( { jsplumb: input.jsplumb });
 };

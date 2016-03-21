@@ -1,4 +1,4 @@
 on.input.container = function() {
-  input.jsplumb.setContainer(data);
+  input.jsplumb.setContainer(input.container);
   output( { jsplumb: input.jsplumb });
 };
