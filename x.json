@@ -55,7 +55,7 @@
       "title": "Add endpoint",
       "ns": "jsplumb",
       "name": "addEndpoint",
-      "fn": "on.input.el = function() {\n  output({\n    endpoint: input.jsplumb.addEndpoint(data, input.params, input.reference_params),\n    jsplumb: input.jsplumb\n  })\n};\n\n"
+      "fn": "on.input.el = function() {\n  output({\n    endpoint: $.create($.jsplumb.addEndpoint($.el, $.params, $.reference_params)),\n    jsplumb: $.create($.jsplumb)\n  })\n};\n\n"
     },
     {
       "ports": {
@@ -131,7 +131,7 @@
       "title": "Connect",
       "ns": "jsplumb",
       "name": "connect",
-      "fn": "output.connection = input.jsplumb.connect(input.params, input.reference_params);\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "output.connection = $.create($.jsplumb.connect($.params, $.reference_params));\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
       "ports": {
@@ -186,7 +186,7 @@
       "title": "Detach",
       "ns": "jsplumb",
       "name": "detach",
-      "fn": "on.input.connection = function() {\n  output( { success: input.jsplumb.detach(data, input.params), jsplumb: input.jsplumb })\n};\n"
+      "fn": "on.input.connection = function() {\n  output( { success: $.create($.jsplumb.detach($.connection, $.params)), jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
       "ports": {
@@ -222,7 +222,7 @@
       "title": "Draggable",
       "ns": "jsplumb",
       "name": "draggable",
-      "fn": "on.input.el = function() {\n  input.jsplumb.draggable(data, input.options),\n  output({\n    jsplumb: input.jsplumb\n  })\n};\n"
+      "fn": "on.input.el = function() {\n  $.jsplumb.draggable($.el, $.options),\n  output({jsplumb: $.get('jsplumb')})\n};\n"
     },
     {
       "ports": {
@@ -289,7 +289,7 @@
       "title": "Get connections",
       "ns": "jsplumb",
       "name": "getConnections",
-      "fn": "/* todo: non of the parameters are considered */\ninput.jsplumb.getConnections();\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "/* todo: non of the parameters are considered */\n$.jsplumb.getConnections();\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
       "ports": {
@@ -318,7 +318,7 @@
       "title": "Get container",
       "ns": "jsplumb",
       "name": "getContainer",
-      "fn": "input.jsplumb.getContainer();\noutput.jsplumb = input.jsplumb;\n\n"
+      "fn": "$.jsplumb.getContainer();\noutput.jsplumb = $.get('jsplumb');\n\n"
     },
     {
       "ports": {
@@ -349,7 +349,7 @@
       "title": "Get instance",
       "ns": "jsplumb",
       "name": "getInstance",
-      "fn": "output.jsplumb = jsplumb.getInstance(input.defaults)\n"
+      "fn": "output.jsplumb = $.create(jsplumb.getInstance($.defaults))\n"
     },
     {
       "ports": {
@@ -380,7 +380,7 @@
       "title": "Import defaults",
       "ns": "jsplumb",
       "name": "importDefaults",
-      "fn": "on.input.defaults = function() {\n  input.jsplumb.importDefaults(data);\n  output( { jsplumb: input.jsplumb })\n};\n"
+      "fn": "on.input.defaults = function() {\n  $.jsplumb.importDefaults($.defaults);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
       "ports": {
@@ -411,7 +411,7 @@
       "title": "Recalculate offsets",
       "ns": "jsplumb",
       "name": "recalculateOffsets",
-      "fn": "on.input.el = function() {\n  input.jsplumb.recalculateOffsets(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+      "fn": "on.input.el = function() {\n  $.jsplumb.recalculateOffsets($.el);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
       "ports": {
@@ -440,7 +440,7 @@
       "title": "Register endpoint types",
       "ns": "jsplumb",
       "name": "registerEndpointTypes",
-      "fn": "input.jsplumb.registerEndpointTypes(input.types);\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "$.jsplumb.registerEndpointTypes($.types);\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
       "ports": {
@@ -471,7 +471,7 @@
       "title": "Remove",
       "ns": "jsplumb",
       "name": "remove",
-      "fn": "on.input.el = function() {\n  input.jsplumb.remove(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+      "fn": "on.input.el = function() {\n  $.jsplumb.remove($.el);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
       "ports": {
@@ -508,7 +508,7 @@
       "title": "Remove all endpoints",
       "ns": "jsplumb",
       "name": "removeAllEndpoints",
-      "fn": "on.input.el = function() {\n  input.jsplumb.removeAllEndpoints(data, input.recurse);\n  output( { jsplumb: input.jsplumb })\n};\n"
+      "fn": "on.input.el = function() {\n  $.jsplumb.removeAllEndpoints($.el, $.recurse);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
       "ports": {
@@ -538,7 +538,7 @@
       "title": "Repaint",
       "ns": "jsplumb",
       "name": "repaint",
-      "fn": "on.input.el = function() {\n  input.jsplumb.repaint(data);\n  output( { jsplumb: input.jsplumb })\n};\n"
+      "fn": "on.input.el = function() {\n  $.jsplumb.repaint($.el);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
       "ports": {
@@ -568,7 +568,7 @@
       "title": "Repaint everything",
       "ns": "jsplumb",
       "name": "repaintEverything ",
-      "fn": "input.jsplumb.repaintEverything(input.clear_edits);\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "$.jsplumb.repaintEverything($.clear_edits);\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
       "ports": {
@@ -592,7 +592,7 @@
       "title": "Reset",
       "ns": "jsplumb",
       "name": "reset",
-      "fn": "input.jsplumb.reset();\n\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "$.jsplumb.reset();\n\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
       "ports": {
@@ -622,7 +622,7 @@
       "title": "Set container",
       "ns": "jsplumb",
       "name": "setContainer",
-      "fn": "on.input.container = function() {\n  input.jsplumb.setContainer(data);\n  output( { jsplumb: input.jsplumb });\n};\n"
+      "fn": "on.input.container = function() {\n  $.jsplumb.setContainer($.container);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
       "ports": {
@@ -657,7 +657,7 @@
       "title": "Set suspend drawing",
       "ns": "jsplumb",
       "name": "setSuspendDrawing",
-      "fn": "input.jsplumb.setSuspendDrawing(input.suspend, !input.repaint);\noutput.jsplumb = input.jsplumb;\n"
+      "fn": "$.jsplumb.setSuspendDrawing($.suspend, !$.repaint);\noutput.jsplumb = $.get('jsplumb');\n"
     }
   ],
   "twigs": []
