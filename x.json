@@ -12,6 +12,14 @@
   },
   "nodes": [
     {
+      "name": "addEndpoint",
+      "ns": "jsplumb",
+      "title": "Add endpoint",
+      "description": "Adds an Endpoint to a given element or elements. See also `jsPlumbInstance.addEndpoints`.",
+      "phrases": {
+        "active": "Add endpoint"
+      },
+      "async": true,
       "ports": {
         "input": {
           "el": {
@@ -47,17 +55,16 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Add endpoint"
-      },
-      "description": "Adds an Endpoint to a given element or elements. See also `jsPlumbInstance.addEndpoints`.",
-      "title": "Add endpoint",
-      "ns": "jsplumb",
-      "name": "addEndpoint",
       "fn": "on.input.el = function() {\n  output({\n    endpoint: $.create($.jsplumb.addEndpoint($.el, $.params, $.reference_params)),\n    jsplumb: $.create($.jsplumb)\n  })\n};\n\n"
     },
     {
+      "name": "connect",
+      "ns": "jsplumb",
+      "title": "Connect",
+      "description": "Establishes a {@link Connection} between two elements (or {@link Endpoint}s, which are themselves registered to elements).",
+      "phrases": {
+        "active": "Connect"
+      },
       "ports": {
         "input": {
           "params": {
@@ -124,16 +131,17 @@
           }
         }
       },
-      "phrases": {
-        "active": "Connect"
-      },
-      "description": "Establishes a {@link Connection} between two elements (or {@link Endpoint}s, which are themselves registered to elements).",
-      "title": "Connect",
-      "ns": "jsplumb",
-      "name": "connect",
       "fn": "output.connection = $.create($.jsplumb.connect($.params, $.reference_params));\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
+      "name": "detach",
+      "ns": "jsplumb",
+      "title": "Detach",
+      "description": "Detaches a Connection.",
+      "phrases": {
+        "active": "Detach"
+      },
+      "async": true,
       "ports": {
         "input": {
           "connection": {
@@ -178,17 +186,17 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Detach"
-      },
-      "description": "Detaches a Connection.",
-      "title": "Detach",
-      "ns": "jsplumb",
-      "name": "detach",
       "fn": "on.input.connection = function() {\n  output( { success: $.create($.jsplumb.detach($.connection, $.params)), jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
+      "name": "draggable",
+      "ns": "jsplumb",
+      "title": "Draggable",
+      "description": "Initialises some element or elements to be draggable.  You should use this instead of your\nlibrary's draggable method so that jsPlumb can setup the appropriate callbacks.  Your\nunderlying library's drag method is always called from this method.",
+      "phrases": {
+        "active": "Draggable"
+      },
+      "async": true,
       "ports": {
         "input": {
           "el": {
@@ -214,17 +222,16 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Draggable"
-      },
-      "description": "Initialises some element or elements to be draggable.  You should use this instead of your\nlibrary's draggable method so that jsPlumb can setup the appropriate callbacks.  Your\nunderlying library's drag method is always called from this method.",
-      "title": "Draggable",
-      "ns": "jsplumb",
-      "name": "draggable",
       "fn": "on.input.el = function() {\n  $.jsplumb.draggable($.el, $.options),\n  output({jsplumb: $.get('jsplumb')})\n};\n"
     },
     {
+      "name": "getConnections",
+      "ns": "jsplumb",
+      "title": "Get connections",
+      "description": "Gets all or a subset of connections currently managed by this jsPlumb instance.  If only one scope is passed in to this method,\nthe result will be a list of connections having that scope (passing in no scope at all will result in jsPlumb assuming you want the\ndefault scope).\n\nIf multiple scopes are passed in, the return value will be a map of\n\n   `{ scope -> [ connection... ] }`\n",
+      "phrases": {
+        "active": "Get connections"
+      },
       "ports": {
         "input": {
           "scope": {
@@ -282,16 +289,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Get connections"
-      },
-      "description": "Gets all or a subset of connections currently managed by this jsPlumb instance.  If only one scope is passed in to this method,\nthe result will be a list of connections having that scope (passing in no scope at all will result in jsPlumb assuming you want the\ndefault scope).\n\nIf multiple scopes are passed in, the return value will be a map of\n\n   `{ scope -> [ connection... ] }`\n",
-      "title": "Get connections",
-      "ns": "jsplumb",
-      "name": "getConnections",
       "fn": "/* todo: non of the parameters are considered */\n$.jsplumb.getConnections();\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
+      "name": "getContainer",
+      "ns": "jsplumb",
+      "title": "Get container",
+      "description": "Gets the current element in use as the Container for the given jsPlumbInstance",
+      "phrases": {
+        "active": "Get container"
+      },
       "ports": {
         "input": {
           "jsplumb": {
@@ -311,16 +318,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Get container"
-      },
-      "description": "Gets the current element in use as the Container for the given jsPlumbInstance",
-      "title": "Get container",
-      "ns": "jsplumb",
-      "name": "getContainer",
       "fn": "$.jsplumb.getContainer();\noutput.jsplumb = $.get('jsplumb');\n\n"
     },
     {
+      "name": "getInstance",
+      "ns": "jsplumb",
+      "title": "Get instance",
+      "description": "Gets a new instance of jsPlumb.",
+      "phrases": {
+        "active": "Get instance"
+      },
+      "dependencies": {
+        "npm": {
+          "jsplumb": "latest"
+        }
+      },
       "ports": {
         "input": {
           "defaults": {
@@ -337,21 +349,17 @@
           }
         }
       },
-      "dependencies": {
-        "npm": {
-          "jsplumb": "latest"
-        }
-      },
-      "phrases": {
-        "active": "Get instance"
-      },
-      "description": "Gets a new instance of jsPlumb.",
-      "title": "Get instance",
-      "ns": "jsplumb",
-      "name": "getInstance",
       "fn": "output.jsplumb = $.create(jsplumb.getInstance($.defaults))\n"
     },
     {
+      "name": "importDefaults",
+      "ns": "jsplumb",
+      "title": "Import defaults",
+      "description": "Imports all the given defaults into this instance of jsPlumb.   ",
+      "phrases": {
+        "active": "Import defaults"
+      },
+      "async": true,
       "ports": {
         "input": {
           "defaults": {
@@ -372,17 +380,17 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Import defaults"
-      },
-      "description": "Imports all the given defaults into this instance of jsPlumb.   ",
-      "title": "Import defaults",
-      "ns": "jsplumb",
-      "name": "importDefaults",
       "fn": "on.input.defaults = function() {\n  $.jsplumb.importDefaults($.defaults);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
+      "name": "recalculateOffsets",
+      "ns": "jsplumb",
+      "title": "Recalculate offsets",
+      "description": "Recalculates the offsets of all child elements of some element. If you have Endpoints registered on the\ndescendants of some element and you make changes to that element's markup, it is possible that the location\nof each Endpooint relative to the origin of the element may have changed. So you call this to tell jsPlumb to\nrecalculate.  You need to do this because, for performance reasons, jsplumb won't calculate these offsets on\nthe fly.",
+      "phrases": {
+        "active": "Recalculate offsets"
+      },
+      "async": true,
       "ports": {
         "input": {
           "el": {
@@ -403,17 +411,16 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Recalculate offsets"
-      },
-      "description": "Recalculates the offsets of all child elements of some element. If you have Endpoints registered on the\ndescendants of some element and you make changes to that element's markup, it is possible that the location\nof each Endpooint relative to the origin of the element may have changed. So you call this to tell jsPlumb to\nrecalculate.  You need to do this because, for performance reasons, jsplumb won't calculate these offsets on\nthe fly.",
-      "title": "Recalculate offsets",
-      "ns": "jsplumb",
-      "name": "recalculateOffsets",
       "fn": "on.input.el = function() {\n  $.jsplumb.recalculateOffsets($.el);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
+      "name": "registerEndpointTypes",
+      "ns": "jsplumb",
+      "title": "Register endpoint types",
+      "description": "Registers all of the given Endpoint types on this instance of jsPlumb. `types` is expected\nto contain keys with typeids and values with type specification objects.",
+      "phrases": {
+        "active": "Register endpoint types"
+      },
       "ports": {
         "input": {
           "types": {
@@ -433,16 +440,17 @@
           }
         }
       },
-      "phrases": {
-        "active": "Register endpoint types"
-      },
-      "description": "Registers all of the given Endpoint types on this instance of jsPlumb. `types` is expected\nto contain keys with typeids and values with type specification objects.",
-      "title": "Register endpoint types",
-      "ns": "jsplumb",
-      "name": "registerEndpointTypes",
       "fn": "$.jsplumb.registerEndpointTypes($.types);\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
+      "name": "remove",
+      "ns": "jsplumb",
+      "title": "Remove",
+      "description": "Removes the given element from the DOM, along with all Endpoints associated with it,\nand their connections.  This also removes all Endpoints and Connections belonging to child elements, as well as - of course -\nthe child elements themselves.",
+      "phrases": {
+        "active": "Remove"
+      },
+      "async": true,
       "ports": {
         "input": {
           "el": {
@@ -463,17 +471,17 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Remove"
-      },
-      "description": "Removes the given element from the DOM, along with all Endpoints associated with it,\nand their connections.  This also removes all Endpoints and Connections belonging to child elements, as well as - of course -\nthe child elements themselves.",
-      "title": "Remove",
-      "ns": "jsplumb",
-      "name": "remove",
       "fn": "on.input.el = function() {\n  $.jsplumb.remove($.el);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
+      "name": "removeAllEndpoints",
+      "ns": "jsplumb",
+      "title": "Remove all endpoints",
+      "description": "Removes all Endpoints associated with a given element. \nAlso removes all Connections associated with each Endpoint it removes. jsPlumb expects\nthat the element referenced here exists in the DOM. If it does not, or you are uncertain\nwhether it will exist or not, use {@link jsPlumbInstance#remove}.",
+      "phrases": {
+        "active": "Remove all endpoints"
+      },
+      "async": true,
       "ports": {
         "input": {
           "el": {
@@ -500,17 +508,16 @@
           }
         }
       },
-      "async": true,
-      "phrases": {
-        "active": "Remove all endpoints"
-      },
-      "description": "Removes all Endpoints associated with a given element. \nAlso removes all Connections associated with each Endpoint it removes. jsPlumb expects\nthat the element referenced here exists in the DOM. If it does not, or you are uncertain\nwhether it will exist or not, use {@link jsPlumbInstance#remove}.",
-      "title": "Remove all endpoints",
-      "ns": "jsplumb",
-      "name": "removeAllEndpoints",
       "fn": "on.input.el = function() {\n  $.jsplumb.removeAllEndpoints($.el, $.recurse);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
+      "name": "repaint",
+      "ns": "jsplumb",
+      "title": "Repaint",
+      "description": "Repaints an element and its connections.",
+      "phrases": {
+        "active": "Repaint"
+      },
       "ports": {
         "input": {
           "el": {
@@ -531,16 +538,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Repaint"
-      },
-      "description": "Repaints an element and its connections.",
-      "title": "Repaint",
-      "ns": "jsplumb",
-      "name": "repaint",
       "fn": "on.input.el = function() {\n  $.jsplumb.repaint($.el);\n  output( { jsplumb: $.get('jsplumb') })\n};\n"
     },
     {
+      "name": "repaintEverything ",
+      "ns": "jsplumb",
+      "title": "Repaint everything",
+      "description": "Repaints all connections and endpoints.",
+      "phrases": {
+        "active": "Repaint everything"
+      },
       "ports": {
         "input": {
           "clear_edits": {
@@ -561,16 +568,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Repaint everything"
-      },
-      "description": "Repaints all connections and endpoints.",
-      "title": "Repaint everything",
-      "ns": "jsplumb",
-      "name": "repaintEverything ",
       "fn": "$.jsplumb.repaintEverything($.clear_edits);\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
+      "name": "reset",
+      "ns": "jsplumb",
+      "title": "Reset",
+      "description": "Removes all endpoints and connections and clears the listener list. To keep listeners call {@link jsPlumbInstance#deleteEveryEndpoint}\ninstead of this.",
+      "phrases": {
+        "active": "Reset"
+      },
       "ports": {
         "input": {
           "jsplumb": {
@@ -585,16 +592,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Reset"
-      },
-      "description": "Removes all endpoints and connections and clears the listener list. To keep listeners call {@link jsPlumbInstance#deleteEveryEndpoint}\ninstead of this.",
-      "title": "Reset",
-      "ns": "jsplumb",
-      "name": "reset",
       "fn": "$.jsplumb.reset();\n\noutput.jsplumb = $.get('jsplumb');\n"
     },
     {
+      "name": "setContainer",
+      "ns": "jsplumb",
+      "title": "Set container",
+      "description": "Sets the current element to use as the Container for the given jsPlumbInstance - the element that will be the parent for\nall artefacts added by jsPlumb. By default, the Container is set to the offsetParent of the first element on which \n`connect`, `addEndpoint`, `makeSource` or `makeTarget` is called, but you are encouraged to set a Container either in the\narguments to the `jsPlumb.newInstance(...)` method, or via `jsPlumbInstance.importDefaults`.",
+      "phrases": {
+        "active": "Set container"
+      },
       "ports": {
         "input": {
           "container": {
@@ -615,16 +622,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Set container"
-      },
-      "description": "Sets the current element to use as the Container for the given jsPlumbInstance - the element that will be the parent for\nall artefacts added by jsPlumb. By default, the Container is set to the offsetParent of the first element on which \n`connect`, `addEndpoint`, `makeSource` or `makeTarget` is called, but you are encouraged to set a Container either in the\narguments to the `jsPlumb.newInstance(...)` method, or via `jsPlumbInstance.importDefaults`.",
-      "title": "Set container",
-      "ns": "jsplumb",
-      "name": "setContainer",
       "fn": "on.input.container = function() {\n  $.jsplumb.setContainer($.container);\n  output( { jsplumb: $.get('jsplumb') });\n};\n"
     },
     {
+      "name": "setSuspendDrawing",
+      "ns": "jsplumb",
+      "title": "Set suspend drawing",
+      "description": "Sets whether or not drawing is suspended. you should use this when doing bulk painting, like when first drawing a UI.",
+      "phrases": {
+        "active": "Set suspend drawing"
+      },
       "ports": {
         "input": {
           "suspend": {
@@ -650,15 +657,7 @@
           }
         }
       },
-      "phrases": {
-        "active": "Set suspend drawing"
-      },
-      "description": "Sets whether or not drawing is suspended. you should use this when doing bulk painting, like when first drawing a UI.",
-      "title": "Set suspend drawing",
-      "ns": "jsplumb",
-      "name": "setSuspendDrawing",
       "fn": "$.jsplumb.setSuspendDrawing($.suspend, !$.repaint);\noutput.jsplumb = $.get('jsplumb');\n"
     }
-  ],
-  "twigs": []
+  ]
 }
